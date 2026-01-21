@@ -71,7 +71,9 @@ public class Creature
     {
         final int age;
 
-        return age = CURRENT_YEAR - dateOfBirth;
+        age = CURRENT_YEAR - dateOfBirth.getYear();
+
+        return age;
     }
 
     public String getDetails()
