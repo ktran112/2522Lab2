@@ -12,7 +12,7 @@ import java.util.Date;
  * @author Kiet Tran
  * @version 1.0
  */
-public class Creature
+public abstract class Creature
 {
 
     private String name;
@@ -35,7 +35,7 @@ public class Creature
      * @param health the health of the creature
      */
     public Creature(final String name,
-                    final Date dateOfBirth,
+                    final Date dateOfBirth, // NOTE: the constructor is designed like this: Date(1900 + desired year - 1900, month from 0-11, day from 1-31)
                     final int health)
     {
         validateName(name);
@@ -52,7 +52,7 @@ public class Creature
      *
      * @return true if the health is more than 0, false otherwise.
      */
-    public boolean isAlive()
+    public final boolean isAlive()
     {
         return this.health > MIN_HEALTH;
     }
@@ -63,7 +63,7 @@ public class Creature
      * @param damage the amount of damage to that the creature takes
      * @throws DamageException if damage is less than 0
      */
-    public void takeDamage(final int damage)
+    public final void takeDamage(final int damage)
             throws DamageException
     {
         if (damage < MIN_DAMAGE)
@@ -86,7 +86,7 @@ public class Creature
      * @return the new health value after healing
      * @throws HealException if the healAmount is less than 0
      */
-    public int heal(final int healAmount)
+    public final int heal(final int healAmount)
             throws HealException
     {
         if (healAmount < MIN_HEALING)
@@ -107,7 +107,7 @@ public class Creature
      *
      * @return the age of the creature
      */
-    public int getAgeYears()
+    public final int getAgeYears()
     {
         final int age;
 

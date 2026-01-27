@@ -62,7 +62,7 @@ public class Dragon extends Creature
      * @param target the specified target that will receive damage
      * @throws LowFirePowerException if the current fire power is below the required threshold
      */
-    public void breatheFire(Creature target)
+    public final void breatheFire(Creature target)
         throws LowFirePowerException
     {
         if (firePower < FIRE_POWER_EXCEPTION_CONSTANT)

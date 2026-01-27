@@ -98,7 +98,7 @@ public class Elf extends Creature
     {
         if (mana < MIN_MANA || mana > MAX_MANA)
         {
-            throw new IllegalArgumentException("Mana has to range from 0-100");
+            throw new IllegalArgumentException("Mana has to range from 0-50");
         }
     }
 }

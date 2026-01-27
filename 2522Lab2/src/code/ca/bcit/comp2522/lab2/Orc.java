@@ -6,6 +6,7 @@ import java.util.Date;
 /**
  * Represents an Orc creature with berserk as its ability.
  * @author Kiet Tran
+ * @author Devan Lam
  * @version 1.0
  */
 public class Orc extends Creature
@@ -33,15 +34,15 @@ public class Orc extends Creature
     {
         super(name, dateOfBirth, health);
 
-        validateRage();
+        validateRage(rage);
 
         this.rage = rage;
     }
 
     // Rage cannot be less than the minimum requirement and more than the maximum threshold
-    private final void validateRage()
+    private final void validateRage(int rage)
     {
-        if (this.rage < RAGE_MIN || this.rage > RAGE_MAX)
+        if (rage < RAGE_MIN || rage > RAGE_MAX)
         {
             throw new IllegalArgumentException("Invalid rage value.");
         }
@@ -50,9 +51,12 @@ public class Orc extends Creature
 
     /**
      * This is the Orc's main attack. Increases rage value, then attacks. If rage is above the threshold, damage is doubled.
+     * @param target the creature to be attacked
      * @return Damage output
+     * @throws LowRageException if rage is below 5 after entering berserk
      */
-    public final int berserk()
+    public final void berserk(Creature target)
+    throws LowRageException
     {
         this.rage += RAGE_INCREMENT;
 
@@ -73,7 +77,7 @@ public class Orc extends Creature
 
         if (rage > RAGE_THRESHOLD_VALUE)
         {
-            return BASE_DMG * RAGE_MULTIPLIER;
+            target.takeDamage(BASE_DMG * RAGE_MULTIPLIER);
         }
 
 
@@ -81,7 +85,19 @@ public class Orc extends Creature
 
 
         {
-            return BASE_DMG;
+            target.takeDamage(BASE_DMG);
         }
     }
+
+
+    /**
+     * Provides the stats of the Orcs.
+     * @return stats of the orc, including its rage value
+     */
+    @Override
+    public final String getDetails()
+    {
+        return super.getDetails() + "\nRage: " + rage;
+    }
+
 }
