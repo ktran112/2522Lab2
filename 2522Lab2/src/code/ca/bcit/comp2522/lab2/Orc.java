@@ -1,7 +1,5 @@
 package ca.bcit.comp2522.lab2;
 
-import java.util.Date;
-
 
 /**
  * Represents an Orc creature with berserk as its ability.

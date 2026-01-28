@@ -1,7 +1,5 @@
 package ca.bcit.comp2522.lab2;
 
-import java.util.Date;
-
 /**
  * Represents the base of all living entities within the program.
  * <p>
@@ -35,7 +33,7 @@ public abstract class Creature
      * @param health the health of the creature
      */
     public Creature(final String name,
-                    final Date dateOfBirth, // NOTE: the constructor is designed like this: Date(1900 + desired year - 1900, month from 0-11, day from 1-31)
+                    final Date dateOfBirth,
                     final int health)
     {
         validateName(name);
@@ -160,7 +158,7 @@ public abstract class Creature
      */
     private static void validateDateOfBirth(final Date dateOfBirth)
     {
-        if (dateOfBirth == null || dateOfBirth.after(new Date()))
+        if (dateOfBirth == null || dateOfBirth.getYear() > Date.getCurrentYear())
         {
             throw new IllegalArgumentException("Birth date not valid: " + dateOfBirth);
         }

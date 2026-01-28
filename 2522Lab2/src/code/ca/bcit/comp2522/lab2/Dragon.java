@@ -1,6 +1,5 @@
 package ca.bcit.comp2522.lab2;
 
-import java.util.Date;
 
 /**
  * Represents a dragon.
